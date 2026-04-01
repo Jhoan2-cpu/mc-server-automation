@@ -1,0 +1,14 @@
+name: Encender y Desarchivar Server
+on:
+  schedule:
+    - cron: '0 21 * * *' # 4:00 PM Perú (UTC-5)
+  workflow_dispatch:
+
+jobs:
+  encender:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Desarchivar en Clouding
+        run: |
+          curl -X POST "https://api.clouding.io/v1/servers/${{ secrets.SERVER_ID }}/unarchive" \
+          -H "X-API-KEY: ${{ secrets.CLOUDING_API_KEY }}"
