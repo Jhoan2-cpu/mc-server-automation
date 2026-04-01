@@ -1,7 +1,7 @@
 name: Archivar Server TEST
 on:
   schedule:
-    - cron: '28 14 * * *'
+    - cron: '55 14 * * *'
   workflow_dispatch:
 
 jobs:
