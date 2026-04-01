@@ -1,24 +1,13 @@
-name: Apagar y Archivar Server
+name: Archivar Server TEST
 on:
   schedule:
-    - cron: '0 5 * * *' # 12:00 AM Perú del día siguiente (UTC-5)
+    - cron: '0 14 * * *'
   workflow_dispatch:
-
 jobs:
-  apagar:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - name: Stop Seguro via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: root
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            screen -S minecraft -X stuff "stop$(printf '\r')"
-            sleep 30
-
-      - name: Archivar en Clouding
+      - name: API Clouding Archive
         run: |
           curl -X POST "https://api.clouding.io/v1/servers/${{ secrets.SERVER_ID }}/archive" \
           -H "X-API-KEY: ${{ secrets.CLOUDING_API_KEY }}"
