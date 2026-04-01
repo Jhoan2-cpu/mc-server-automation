@@ -1,13 +1,14 @@
 name: Desarchivar Server TEST
 on:
   schedule:
-    - cron: '51 13 * * *'
+    - cron: '5 14 * * *'
   workflow_dispatch:
+
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - name: API Clouding Unarchive
         run: |
-          curl -X POST "https://api.clouding.io/v1/servers/${{ secrets.SERVER_ID }}/unarchive" \
-     -H "X-API-KEY: ${{ secrets.CLOUDING_API_KEY }}"
+          curl -i -X POST "https://api.clouding.io/v1/servers/${{ secrets.SERVER_ID }}/unarchive" \
+          -H "X-API-KEY: ${{ secrets.CLOUDING_API_KEY }}"

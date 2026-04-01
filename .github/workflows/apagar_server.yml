@@ -1,13 +1,14 @@
 name: Archivar Server TEST
 on:
   schedule:
-    - cron: '0 14 * * *'
+    - cron: '8 14 * * *'
   workflow_dispatch:
+
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - name: API Clouding Archive
         run: |
-          curl -X POST "https://api.clouding.io/v1/servers/${{ secrets.SERVER_ID }}/archive" \
+          curl -i -X POST "https://api.clouding.io/v1/servers/${{ secrets.SERVER_ID }}/archive" \
           -H "X-API-KEY: ${{ secrets.CLOUDING_API_KEY }}"
