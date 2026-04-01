@@ -11,4 +11,6 @@ jobs:
       - name: API Clouding Unarchive
         run: |
           curl -i -X POST "https://api.clouding.io/v1/servers/${{ secrets.SERVER_ID }}/unarchive" \
-          -H "X-API-KEY: ${{ secrets.CLOUDING_API_KEY }}"
+          -H "X-API-KEY: ${{ secrets.CLOUDING_API_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d ''
